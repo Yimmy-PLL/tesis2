@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 
 app = Flask(__name__)
 CORS(app)
@@ -14,7 +14,8 @@ collection = db["lecturas"]
 @app.route("/upload", methods=["POST"])
 def upload_data():
     data = request.get_json()
-    data["fecha"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    hora_peru = datetime.now(timezone.utc) + timedelta(hours=-5)
+    data["fecha"] = hora_peru.strftime("%Y-%m-%d %H:%M:%S")
     collection.insert_one(data)
     print("Dato guardado:", data)
     return jsonify({"status": "ok"})

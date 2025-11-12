@@ -14,7 +14,7 @@ collection = db["lecturas"]
 @app.route("/upload", methods=["POST"])
 def upload_data():
     data = request.get_json()
-    hora_peru = datetime.now(timezone.utc) + timedelta(hours=-5)
+    hora_peru = datetime.utcnow() - timedelta(hours=5)
     data["fecha"] = hora_peru.strftime("%Y-%m-%d %H:%M:%S")
     collection.insert_one(data)
     print("Dato guardado:", data)

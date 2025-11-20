@@ -1,27 +1,54 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Monitoreo UV en Tiempo Real</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monitoreo UV - Estación IoT</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-    <h1>Monitoreo UV en Tiempo Real</h1>
 
-    <h2>Predicción UV</h2>
-    <p id="prediccion">Cargando...</p>
+    <header>
+        <h1>🌞 Monitoreo de Radiación UV</h1>
+        <p>Datos en tiempo real + Predicción con Machine Learning</p>
+    </header>
 
-    <h2>Últimos Datos Registrados</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Fecha</th>
-                <th>UV</th>
-                <th>Temperatura</th>
-            </tr>
-        </thead>
-        <tbody id="tabla"></tbody>
-    </table>
+    <section class="container">
 
-<script src="script.js"></script>
+        <!-- Tarjetas -->
+        <div class="card">
+            <h2>UV Actual</h2>
+            <p id="uv_actual" class="value">--</p>
+        </div>
+
+        <div class="card">
+            <h2>Temperatura Actual</h2>
+            <p id="temp_actual" class="value">--</p>
+        </div>
+
+        <div class="card">
+            <h2>Predicción UV (Siguiente hora)</h2>
+            <p id="uv_prediccion" class="value">--</p>
+        </div>
+
+        <!-- Gráfico -->
+        <div class="chart-container">
+            <h2>Histórico Reciente</h2>
+            <canvas id="grafico_uv"></canvas>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>Estación IoT – Proyecto de Tesis</p>
+    </footer>
+
+    <!-- Script -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+
 </body>
 </html>
